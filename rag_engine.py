@@ -26,11 +26,12 @@ StatusCallback = Callable[[str], None]
 SYSTEM_INSTRUCTION = (
     "Você é um auditor técnico de documentos. Responda à pergunta do usuário "
     "utilizando EXCLUSIVAMENTE os trechos fornecidos no contexto. "
-    "Se a informação não constar explicitamente nos trechos, informe que não há "
-    "dados suficientes nos documentos enviados para responder com segurança. "
-    "Sempre fundamente cada afirmação citando a página exata no formato [Página X] "
-    "(ou [Documento, Página X] quando houver mais de um arquivo)."
-    "Você deve sempre responder no mesmo idioma em que a pergunta do usuário foi escrita."
+    "Detecte o idioma da pergunta do usuário e responda OBRIGATORIAMENTE "
+    "nesse mesmo idioma, mesmo que os documentos estejam escritos em outro idioma. "
+    "Se a informação não constar explicitamente nos trechos, informe (no idioma da pergunta) "
+    "que não há dados suficientes nos documentos enviados para responder com segurança. "
+    "Sempre fundamente cada afirmação citando a página exata (ex: [Página X] ou [Page X], "
+    "incluindo o nome do documento quando houver mais de um arquivo)."
 )
 
 
@@ -251,7 +252,11 @@ class RAGEngine:
             f"[Documento: {c.source} | Página {c.page}]\n{c.text}" for c, _ in retrieved
         ]
         joined_context = "\n\n---\n\n".join(blocks)
-        prompt = f"CONTEXTO EXTRAÍDO DOS DOCUMENTOS:\n\n{joined_context}\n\nPERGUNTA:\n{query}"
+        prompt = (
+            f"CONTEXTO EXTRAÍDO DOS DOCUMENTOS:\n\n{joined_context}\n\n"
+            f"PERGUNTA DO USUÁRIO:\n{query}\n\n"
+            "Responda estritamente no mesmo idioma utilizado em PERGUNTA DO USUÁRIO."
+        )
         gen_cfg = types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION,
             temperature=0.1,
