@@ -30,6 +30,7 @@ SYSTEM_INSTRUCTION = (
     "dados suficientes nos documentos enviados para responder com segurança. "
     "Sempre fundamente cada afirmação citando a página exata no formato [Página X] "
     "(ou [Documento, Página X] quando houver mais de um arquivo)."
+    "Você deve sempre responder no mesmo idioma em que a pergunta do usuário foi escrita."
 )
 
 
