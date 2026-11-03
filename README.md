@@ -1,6 +1,6 @@
 # SmartDoc Auditor
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://SEU-LINK-AQUI.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://smartdoc-auditor.streamlit.app)
 
 Aplicação web de **Retrieval-Augmented Generation (RAG)** construída do zero em Python puro, NumPy e Google Gemini API para auditoria e consulta de documentos técnicos em PDF (resoluções regulatórias, editais universitários, contratos societários e regulamentos de FIDC), com fundamentação estrita e citação exata da página de origem (`[Página X]`).
 
@@ -8,7 +8,7 @@ Aplicação web de **Retrieval-Augmented Generation (RAG)** construída do zero 
 
 A aplicação está publicada gratuitamente no **Streamlit Community Cloud** e pode ser testada diretamente pelo navegador, sem necessidade de configurar ambiente local ou chave de API própria:
 
-👉 **Acesse aqui:** [https://SEU-LINK-AQUI.streamlit.app](https://SEU-LINK-AQUI.streamlit.app)
+👉 **Acesse aqui:** [https://smartdoc-auditor.streamlit.app](https://smartdoc-auditor.streamlit.app)
 
 1. Na barra lateral (**Base de Documentos**), envie um ou mais arquivos PDF com texto digital selecionável.
 2. Clique em **Processar Documentos** e aguarde a indexação dos trechos.
